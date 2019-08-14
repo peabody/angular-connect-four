@@ -1,23 +1,22 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div>
-  <h1>
-    Welcome to Connect Four!
-  </h1>
-  <h2 *ngIf="winMsg">
+  <h1 *ngIf="winMsg">
     {{ winMsg }}
-  </h2>
-  <h2 *ngIf="!gameOver">{{ getColor() + "'s turn" }}</h2>
+  </h1>
+  <h1 *ngIf="!gameOver">{{ getColor() + "'s turn" }}</h1>
   <button (click)="resetBoard()">Reset Board</button>
   <button (click)="move4me()">Move 4 Me</button>
+  <button (click)="toggleAutoPlay()">Auto Play</button>
 
   <table>
     <tr *ngFor="let row of board">
-      <td *ngFor="let cellColor of row" (click)="onClick($event.target)">
+      <td *ngFor="let cellColor of row" (click)="onClick($event.currentTarget)">
         <div *ngIf="cellColor !== null"
              [ngStyle]="{'background-color': cellColor, 'border-radius': '80px', 'height': '100%', width: '100%'}" title="{{ cellColor }}"></div>
       </td>
     </tr>
   </table>
+  Wins: Red {{ stats.Red }}, Yellow {{ stats.Yellow }}
 </div>
 
 
